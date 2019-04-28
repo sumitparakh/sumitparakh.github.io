@@ -1,18 +1,44 @@
 import React from "react"
-
+import { Link, graphql } from 'gatsby';
 import Layout from "../components/layout"
+import './posts.css';
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <div>
-      <a href="https://github.com/sumitparakh" target="_blank" style={{color: "rebeccapurple"}} rel="noopener noreferrer">
-        <i class="fab fa-github fa-2x"></i>
-      </a>
-    </div><br/>
-    <h1>Coming Soon!!</h1>
-  </Layout>
-)
+const IndexPage = (props) => {
+  const postList = props.data.allMarkdownRemark;
+  return (
+    <Layout>
+      {postList.edges.map(({ node }, i) => (
+        <Link to={node.fields.slug} key={i} className="link">
+          <div className="post-list">
 
-export default IndexPage
+            <h1>{node.frontmatter.title}</h1>
+            <span>{node.frontmatter.date}</span>
+            <p>{node.excerpt}</p>
+          </div>
+        </Link>
+      ))}
+    </Layout>
+  );
+}
+
+export default IndexPage;
+
+export const listQuery = graphql`
+  query ListQuery {
+    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
+      edges {
+        node {
+          fields{
+            slug
+          }
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM Do YYYY")
+            title
+          }
+        }
+      }
+    }
+  }
+`

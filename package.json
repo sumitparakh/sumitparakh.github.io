@@ -6,15 +6,15 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "gatsby": "^2.1.19",
-    "gatsby-image": "^2.0.30",
+    "gatsby-image": "^2.0.40",
     "gatsby-plugin-manifest": "^2.0.20",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.7",
-    "gatsby-plugin-sharp": "^2.0.23",
+    "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-remark-prismjs": "^3.2.8",
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-remark": "^2.3.12",
-    "gatsby-transformer-sharp": "^2.1.15",
+    "gatsby-transformer-sharp": "^2.1.18",
     "prismjs": "^1.16.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
@@ -36,7 +36,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "deploy": "gatsby build && xcopy CNAME public && gh-pages -d public -b master"
+    "deploy": "gatsby build && xcopy CNAME public && gh-pages -d public -b gh-pages"
   },
   "repository": {
     "type": "git",

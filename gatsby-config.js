@@ -2,7 +2,12 @@ module.exports = {
   siteMetadata: {
     title: `Sumit Parakh Blog`,
     description: `A blog to share knowledge and learn about JavaScript and its different frameworks, specially Angular.`,
-    author: `Sumit Parakh`
+    author: `Sumit Parakh`,
+    siteUrl: 'https://sumitparakh.dev',
+    titleTemplate: "%s - Sumit Parakh Blog",
+    url: "https://sumitparakh.dev",
+    image: "/images/gatsby-astronaut.png",
+    twitterUsername: "@sumitparak"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

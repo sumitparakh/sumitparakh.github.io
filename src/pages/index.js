@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from 'gatsby';
 import Layout from "../components/layout"
 import './posts.css';
-import SEO from "../components/seo"
 
 const IndexPage = (props) => {
   const postList = props.data.allMarkdownRemark;

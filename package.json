@@ -36,7 +36,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "deploy": "gatsby build && xcopy CNAME public && gh-pages -d public -b gh-pages"
+    "deploy": "gatsby build && xcopy /Y CNAME public && gh-pages -d public -b gh-pages"
   },
   "repository": {
     "type": "git",

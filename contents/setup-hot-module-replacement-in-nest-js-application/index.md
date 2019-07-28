@@ -1,7 +1,7 @@
 ---
 title: Setup hot module replacement in NestJS application
 description: This post explains method to setup hot module replacement (HMR) in NestJS application and also some troubleshooting methods.
-date: '2019-04-28'
+date: '2019-07-28'
 image: time.jpg
 tags: ['nestjs', 'nodejs', 'hmr', 'typescript']
 ---

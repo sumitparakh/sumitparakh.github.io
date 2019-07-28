@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Sumit Parakh Blog`,
+    title: `Sumit Parakh`,
     description: `A blog to share knowledge and learn about JavaScript and its different frameworks, specially Angular.`,
     author: `Sumit Parakh`,
     siteUrl: 'https://sumitparakh.dev',
-    titleTemplate: "%s - Sumit Parakh Blog",
+    titleTemplate: "%s - Sumit Parakh",
     url: "https://sumitparakh.dev",
     image: "/images/gatsby-astronaut.png",
     twitterUsername: "@sumitparak"

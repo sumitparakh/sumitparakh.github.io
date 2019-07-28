@@ -1,8 +1,13 @@
 import React from "react"
 import { Link, graphql } from 'gatsby';
-import Layout from "../components/layout"
+import Layout from "../components/layout";
 import './posts.css';
+import { setConfig } from 'react-hot-loader';
+import 'typeface-roboto';
 
+setConfig({
+  pureSFC: true
+});
 const IndexPage = (props) => {
   const postList = props.data.allMarkdownRemark;
   return (

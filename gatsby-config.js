@@ -43,6 +43,7 @@ module.exports = {
         path: `${__dirname}/contents`,
         name: "pages"
       }
-    }
+    },
+    'gatsby-plugin-material-ui'
   ],
 }

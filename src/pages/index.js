@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import './posts.css';
 import { setConfig } from 'react-hot-loader';
 import 'typeface-roboto';
+import SEO from "../components/SEO";
 
 setConfig({
   pureSFC: true
@@ -12,6 +13,13 @@ const IndexPage = (props) => {
   const postList = props.data.allMarkdownRemark;
   return (
     <Layout>
+      <SEO
+        title={'Sumit Parakh Blog'}
+        description={'Blogging about Web technologies'}
+        url={'https://sumitparakh.dev'}
+        pathname={props.location.pathname}
+      />
+
       {postList.edges.map(({ node }, i) => (
         <Link to={node.fields.slug} key={i} className="link">
           <div className="post-list">

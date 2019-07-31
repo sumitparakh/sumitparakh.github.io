@@ -46,9 +46,7 @@
     "deploy": "gatsby build && xcopy /Y CNAME public && gh-pages -d public -b gh-pages"
   },
   "husky": {
-    "hooks": {
-      "pre-commit": "npm run format && git add ."
-    }
+    "hooks": {}
   },
   "repository": {
     "type": "git",

@@ -1,18 +1,18 @@
-import React from "react";
-import Layout from "../components/layout";
-import Img from "gatsby-image";
-import { graphql } from "gatsby";
-import PrevNext from "../components/prevnext";
-import SEO from "../components/SEO";
-import BlogPostTagList from "./blog-post-tag-list";
+import React from "react"
+import Layout from "../components/layout"
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
+import PrevNext from "../components/prevnext"
+import SEO from "../components/SEO"
+import BlogPostTagList from "./blog-post-tag-list"
 
 function BlogPost(props) {
-  const url = props.data.site.siteMetadata.siteUrl;
+  const url = props.data.site.siteMetadata.siteUrl
   const thumbnail =
     props.data.markdownRemark.frontmatter.image &&
-    props.data.markdownRemark.frontmatter.image.childImageSharp.resize.src;
-  const { title, image, tags } = props.data.markdownRemark.frontmatter;
-  const { prev, next } = props.pageContext;
+    props.data.markdownRemark.frontmatter.image.childImageSharp.resize.src
+  const { title, image, tags } = props.data.markdownRemark.frontmatter
+  const { prev, next } = props.pageContext
 
   return (
     <Layout>

@@ -1,6 +1,6 @@
-import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import React from "react";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
 import {
   AppBar,
   CssBaseline,
@@ -13,19 +13,19 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@material-ui/core";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
+} from "@material-ui/core"
+import { useTheme, makeStyles } from "@material-ui/core/styles"
 import {
   ChevronLeft,
   ChevronRight,
   Menu,
   Inbox,
   Mail,
-} from "@material-ui/icons";
+} from "@material-ui/icons"
 
-import clsx from "clsx";
+import clsx from "clsx"
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
-}));
+}))
 
 const Header = ({ siteTitle, props }) => {
   const classes = useStyles()
@@ -169,14 +169,14 @@ const Header = ({ siteTitle, props }) => {
       </div>
     </>
   )
-};
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-};
+}
 
 Header.defaultProps = {
   siteTitle: ``,
-};
+}
 
-export default Header;
+export default Header

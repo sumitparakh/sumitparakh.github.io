@@ -47,17 +47,17 @@ exports.createPages = ({ actions, graphql }) => {
 
             // All tags
             let allTags = [];
-            
+
             // Iterate through each post, putting all found tags into `allTags array`
-            _.each(posts, edge =>{
-                if(_.get(edge, 'node.frontmatter.tags')) {
+            _.each(posts, edge => {
+                if (_.get(edge, 'node.frontmatter.tags')) {
                     allTags = allTags.concat(edge.node.frontmatter.tags);
                 }
             });
 
             allTags = _.uniq(allTags);
 
-            allTags.forEach((tag,  index) => {
+            allTags.forEach((tag, index) => {
                 createPage({
                     path: `/${_.kebabCase(tag)}/`,
                     component: tagsTemplate,
@@ -73,8 +73,8 @@ exports.createPages = ({ actions, graphql }) => {
                     component: blogTemplate,
                     context: {
                         slug: node.fields.slug,
-                        prev: index === 0 ? null : posts[index-1],
-                        next: index === result.length - 1 ? null : posts[index+1],
+                        prev: index === 0 ? null : posts[index - 1],
+                        next: index === result.length - 1 ? null : posts[index + 1],
                     }, // additional data can be passed via context
                 })
             });
@@ -85,8 +85,8 @@ exports.createPages = ({ actions, graphql }) => {
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
     const { createNodeField } = actions;
-    if(node.internal.type === `MarkdownRemark`) {
-        const slug = createFilePath({node, getNode, basePath: `pages`});
+    if (node.internal.type === `MarkdownRemark`) {
+        const slug = createFilePath({ node, getNode, basePath: `pages` });
         createNodeField({
             node,
             name: `slug`,

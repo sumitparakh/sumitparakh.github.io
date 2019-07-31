@@ -1,16 +1,16 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import "./posts.css"
-import { setConfig } from "react-hot-loader"
-import "typeface-roboto"
-import SEO from "../components/SEO"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Layout from "../components/layout";
+import "./posts.css";
+import { setConfig } from "react-hot-loader";
+import "typeface-roboto";
+import SEO from "../components/SEO";
 
 setConfig({
   pureSFC: true,
 })
 const IndexPage = props => {
-  const postList = props.data.allMarkdownRemark
+  const postList = props.data.allMarkdownRemark;
   return (
     <Layout>
       <SEO

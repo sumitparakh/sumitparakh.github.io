@@ -28,6 +28,7 @@
   "devDependencies": {
     "clsx": "^1.0.4",
     "gh-pages": "^2.0.1",
+    "husky": "^3.0.2",
     "prettier": "^1.16.4",
     "react-hot-loader": "^4.12.10"
   },
@@ -43,6 +44,11 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "deploy": "gatsby build && xcopy /Y CNAME public && gh-pages -d public -b gh-pages"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "npm run format && git add ."
+    }
   },
   "repository": {
     "type": "git",

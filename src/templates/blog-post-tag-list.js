@@ -1,6 +1,6 @@
-import React from "react"
-import { Chip, makeStyles } from "@material-ui/core"
-import { Link } from "@reach/router"
+import React from "react";
+import { Chip, makeStyles } from "@material-ui/core";
+import { Link } from "@reach/router";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,15 +13,15 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
     marginBottom: theme.spacing(2),
   },
-}))
+}));
 
 const CustomChip = props => {
-  const chipClass = useStyles()
+  const chipClass = useStyles();
   return (
-    <Link to={props.tag} style={{ textDecoration: "none" }}>
+    <Link to={props.tag} key={props.id} style={{ textDecoration: "none" }}>
       <Chip
         className={chipClass.chip}
-        color="primary1"
+        color="default"
         label={props.tag}
         key={props.index}
       />
@@ -33,7 +33,7 @@ export default class BlogPostTagList extends React.Component {
   render() {
     if (this.props && this.props.tags) {
       return this.props.tags.map((tag, index) => (
-        <CustomChip tag={tag} index={index} />
+        <CustomChip tag={tag} key={index} id={index} index={index} />
       ))
     }
     return <></>

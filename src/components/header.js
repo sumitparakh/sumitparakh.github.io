@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 import {
   AppBar,
   CssBaseline,
@@ -13,40 +13,25 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@material-ui/core"
-import { useTheme, makeStyles } from "@material-ui/core/styles"
+} from "@material-ui/core";
+import { makeStyles, createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import {
-  ChevronLeft,
   ChevronRight,
   Menu,
   Inbox,
   Mail,
-} from "@material-ui/icons"
+} from "@material-ui/icons";
 
-import clsx from "clsx"
+import clsx from "clsx";
 
-const drawerWidth = 240
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    background: `rebeccapurple`,
     marginBottom: `4.75rem`,
   },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -83,90 +68,126 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
-}))
+}));
 
-const Header = ({ siteTitle, props }) => {
-  const classes = useStyles()
-  const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
+const Header = ({ siteTitle }) => {
+
+  const THEME_LIGHT = 'light';
+  const THEME_DARK = 'dark';
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [{ themeType, themeActionCss }, setThemeType] = React.useState({ themeType: THEME_LIGHT, themeActionCss: 'far fa-lightbulb' });
+
+  function getPrimaryColor(type) {
+    switch (type) {
+      case THEME_DARK: return '#303030';
+      case THEME_LIGHT: return '#3f51b5';
+    }
+  }
+
+  const toggleTheme = createMuiTheme({
+    palette: {
+      type: themeType,
+      primary: {
+        main: getPrimaryColor(themeType),
+      },
+      secondary: {
+        main: '#303030'
+      }
+    }
+  });
+
+  function toggleUITheme() {
+    if (themeType === THEME_LIGHT) {
+      setThemeType({ themeType: THEME_DARK, themeActionCss: 'fas fa-lightbulb' });
+    }
+    if (themeType === THEME_DARK) {
+      setThemeType({ themeType: THEME_LIGHT, themeActionCss: 'far fa-lightbulb' });
+    }
+  }
 
   function handleDrawerOpen() {
     // setOpen(true);
   }
 
   function handleDrawerClose() {
-    setOpen(false)
+    setOpen(false);
   }
 
   return (
     <>
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          className={clsx(classes.appBar, { [classes.appBarShift]: open })}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, open && classes.hide)}
-            >
-              <Menu />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              <Link
-                to="/"
-                style={{
-                  color: `white`,
-                  textDecoration: `none`,
-                }}
+      <MuiThemeProvider theme={toggleTheme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+          >
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                className={clsx(classes.menuButton, open && classes.hide)}
               >
-                {siteTitle}
-              </Link>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawer}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? <ChevronLeft /> : <ChevronRight />}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-      </div>
+                <Menu />
+              </IconButton>
+              <Typography variant="h6" noWrap>
+                <Link
+                  to="/"
+                  style={{
+                    color: `white`,
+                    textDecoration: `none`,
+                  }}
+                >
+                  {siteTitle}
+                </Link>
+              </Typography>
+              <IconButton
+                className="toggleThemeMode"
+                color="inherit"
+                aria-label="open drawer"
+                edge="end" onClick={toggleUITheme}
+              >
+                <i className={themeActionCss}></i>
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            variant="persistent"
+            anchor="left"
+            open={open}
+          >
+            <div className={classes.drawer}>
+              <IconButton onClick={handleDrawerClose}>
+                <ChevronRight />
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <Inbox /> : <Mail />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <List>
+              {["All mail", "Trash", "Spam"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <Inbox /> : <Mail />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </div>
+      </MuiThemeProvider>
     </>
   )
 }

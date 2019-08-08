@@ -1,6 +1,6 @@
 .link {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 .post-list {
@@ -12,10 +12,6 @@
 
 img {
   height: 90% !important;
-}
-
-.post-list:hover {
-  background-color: whitesmoke;
 }
 
 .tags {

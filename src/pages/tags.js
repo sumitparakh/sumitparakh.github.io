@@ -1,9 +1,9 @@
-import React from "react"
-import Layout from "../components/layout"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import Layout from "../components/layout";
+import { Link, graphql } from "gatsby";
 
 function TagsPage(props) {
-  const data = props.data.allMarkdownRemark.group
+  const data = props.data.allMarkdownRemark.group;
 
   return (
     <Layout>
@@ -19,7 +19,7 @@ function TagsPage(props) {
   )
 }
 
-export default TagsPage
+export default TagsPage;
 
 export const pageQuery = graphql`
   query {

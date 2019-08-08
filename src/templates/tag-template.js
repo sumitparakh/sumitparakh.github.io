@@ -1,11 +1,11 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/SEO"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Layout from "../components/layout";
+import SEO from "../components/SEO";
 
 function Tags(props) {
-  const posts = props.data.allMarkdownRemark.edges
-  const { tag } = props.pageContext
+  const posts = props.data.allMarkdownRemark.edges;
+  const { tag } = props.pageContext;
 
   return (
     <Layout>
